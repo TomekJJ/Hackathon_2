@@ -58,7 +58,7 @@ def guess_full_pswrd(pswrd):
     user_guess = input("Enter the password -->").lower()
     if user_guess == pswrd:
         print("Congratulations! You've guessed the password !!!")
-        sys.exit()  # Koniec gry - użytkownik odgadł hasło
+        # sys.exit()  # Koniec gry - użytkownik odgadł hasło
     else:
         print("The password is incorrect")
     return user_guess

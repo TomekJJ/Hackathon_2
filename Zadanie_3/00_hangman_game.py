@@ -1,9 +1,9 @@
 from geting_password import upload_file, user_category_choice, draw_pass
-from game import print_emtpy_pass, guess_letter, find_letter, show_used_letters, choice_todo, guess_full_pswrd
+from game_elements import print_emtpy_pass, guess_letter, find_letter, show_used_letters, choice_todo, guess_full_pswrd
 from display_hangman import display_hangman, display_final_hangman
 
+def game():
 
-def main():
     #losowanie hasła z pliku
     pets, rivers, cities = upload_file('passwords.csv')
     choice = user_category_choice()
@@ -22,7 +22,13 @@ def main():
 
         choice = choice_todo()
         if choice == "y":
-            guess_full_pswrd(pswrd)
+            user_guess = input("Enter the password -->").lower()
+            if user_guess == pswrd:
+                print("Congratulations! You've guessed the password !!!")
+                break
+            else:
+                print("The password is incorrect")
+                display_hangman(attempt)
             attempt += 1
 
         elif choice == "n":
@@ -50,5 +56,17 @@ def main():
             break
 
 
+def main():
+    game()
+    again = input("Play again? (y/n)").lower()
+    if again == "y":
+        print()
+        print('**********************************')
+        game()
+    else:
+        print("Thanks for playing!")
+
+
 if __name__ == '__main__':
     main()
+
