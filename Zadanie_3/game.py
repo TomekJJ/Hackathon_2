@@ -11,8 +11,14 @@ def print_emtpy_pass(pswrd):
 
 
 def guess_letter():
-    letter = str(input("Guess letter -->")).lower()
-    return letter
+    while True:
+        letter = str(input("Guess letter -->")).lower()
+        if not letter.isalpha():
+            print("It is not a letter. Try again: ")
+        elif len(letter) != 1:
+            print("Too many characters. Try again: ")
+        else:
+            return letter
 
 
 def find_letter(letter, pswrd, ingame_pswrd):
